@@ -19,4 +19,10 @@ class PawnTest {
                 () -> assertThrows(IllegalArgumentException.class,
                         () -> assertThat(new Pawn("orange"))));
     }
+
+    @Test
+    public void create_기본생성자() throws Exception {
+        Pawn pawn = new Pawn();
+        assertThat("white", pawn.getColor());
+    }
 }
