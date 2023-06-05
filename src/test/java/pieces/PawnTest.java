@@ -11,9 +11,8 @@ class PawnTest {
     @DisplayName("흰색 폰과 검은색 폰만이 생성되어야 한다")
     @Test
     void create() {
-        Pawn pawn1 = new Pawn("white");
-        Pawn pawn2 = new Pawn("black");
-
+        final Pawn pawn1 = new Pawn("white");
+        final Pawn pawn2 = new Pawn("black");
 
         assertAll(() -> assertThat(pawn1.getColor()).isEqualTo("white"),
                 () -> assertThat(pawn2.getColor()).isEqualTo("black"),
