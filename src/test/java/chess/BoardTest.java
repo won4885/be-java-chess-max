@@ -1,14 +1,15 @@
 package chess;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pieces.Pawn;
-import pieces.PieceColor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static pieces.PieceColor.BLACK_PIECE;
 import static pieces.PieceColor.WHITE_PIECE;
 
 class BoardTest {
+    @DisplayName("Pawn을 체스 판에 추가할 수 있다.")
     @Test
     void create() {
         Board board = new Board();
