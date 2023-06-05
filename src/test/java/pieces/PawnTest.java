@@ -20,9 +20,10 @@ class PawnTest {
                         () -> assertThat(new Pawn("orange"))));
     }
 
+    @DisplayName("색이 없는 폰을 생성하는 경우 흰색 말을 생성한다")
     @Test
     public void create_기본생성자() throws Exception {
         Pawn pawn = new Pawn();
-        assertThat("white", pawn.getColor());
+        assertThat("white").isEqualTo(pawn.getColor());
     }
 }

@@ -6,6 +6,10 @@ import lombok.Getter;
 public class Pawn {
     private final String color;
 
+    public Pawn() {
+        this.color = "white";
+    }
+
     public Pawn(String color) {
         validatePawnColor(color);
         this.color = color;
