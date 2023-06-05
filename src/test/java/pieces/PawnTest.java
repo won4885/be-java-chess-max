@@ -25,7 +25,7 @@ class PawnTest {
     @DisplayName("색이 없는 폰을 생성하는 경우 흰색 말을 생성한다")
     @Test
     void create_기본생성자() {
-        Pawn pawn = new Pawn();
+        final Pawn pawn = new Pawn();
         assertThat(WHITE_PIECE).isEqualTo(pawn.getColor());
     }
 }

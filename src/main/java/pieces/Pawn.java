@@ -13,7 +13,7 @@ public class Pawn {
         this.color = WHITE_PIECE;
     }
 
-    public Pawn(String color) {
+    public Pawn(final String color) {
         validatePawnColor(color);
         this.color = color;
     }

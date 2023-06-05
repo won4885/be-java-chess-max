@@ -11,7 +11,7 @@ public class Board {
     public Board() {
     }
 
-    public void add(Pawn pawn) {
+    public void add(final Pawn pawn) {
         board.add(pawn);
     }
 
@@ -19,7 +19,7 @@ public class Board {
         return board.size();
     }
 
-    public Pawn findPawn(int index) {
+    public Pawn findPawn(final int index) {
         return board.get(index);
     }
 }

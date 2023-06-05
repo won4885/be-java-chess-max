@@ -12,17 +12,17 @@ class BoardTest {
     @DisplayName("Pawn을 체스 판에 추가할 수 있다.")
     @Test
     void create() {
-        Board board = new Board();
+        final Board board = new Board();
 
         // white
-        Pawn white = new Pawn(WHITE_PIECE);
+        final Pawn white = new Pawn(WHITE_PIECE);
         board.add(white);
 
         assertThat(1).isEqualTo(board.size());
         assertThat(white).isEqualTo(board.findPawn(0));
 
         // black
-        Pawn black = new Pawn(BLACK_PIECE);
+        final Pawn black = new Pawn(BLACK_PIECE);
         board.add(black);
 
         assertThat(2).isEqualTo(board.size());
