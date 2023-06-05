@@ -40,13 +40,6 @@ public class Board {
         return blackPawns.get(index);
     }
 
-    public void initialize() {
-        for (int i = 0; i < BOARD_LENGTH; i++) {
-            addWhitePawns(new Pawn());
-            addBlackPawns(new Pawn(BLACK_COLOR, BLACK_REPRESENTATION));
-        }
-    }
-
     public String getWhitePawnsResult() {
         StringBuilder white = new StringBuilder();
         for (Pawn whitePawn : whitePawns) {
@@ -63,5 +56,36 @@ public class Board {
         }
 
         return black.toString();
+    }
+
+    public void initialize() {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
+            addWhitePawns(new Pawn());
+            addBlackPawns(new Pawn(BLACK_COLOR, BLACK_REPRESENTATION));
+        }
+
+        System.out.println(createChessBoard());
+    }
+
+    private String getBlankLine() {
+        return "........";
+    }
+
+    private String getNextLine() {
+        return "\n";
+    }
+
+    private String createChessBoard() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getBlankLine()).append(getNextLine())
+                .append(getBlackPawnsResult()).append(getNextLine())
+                .append(getBlankLine()).append(getNextLine())
+                .append(getBlankLine()).append(getNextLine())
+                .append(getBlankLine()).append(getNextLine())
+                .append(getBlankLine()).append(getNextLine())
+                .append(getWhitePawnsResult()).append(getNextLine())
+                .append(getBlankLine()).append(getNextLine());
+
+        return sb.toString();
     }
 }
