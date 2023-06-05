@@ -25,6 +25,6 @@ class PawnTest {
     void create_기본생성자() {
         final Pawn pawn = new Pawn();
         assertThat(WHITE_COLOR).isEqualTo(pawn.getColor());
-        assertThat(WHITE_REPRESENTATION, pawn.getRepresentation());
+        assertThat(WHITE_REPRESENTATION).isEqualTo(pawn.getRepresentation());
     }
 }
