@@ -64,7 +64,7 @@ public class Board {
             addBlackPawns(new Pawn(BLACK_COLOR, BLACK_REPRESENTATION));
         }
 
-        System.out.println(createChessBoard());
+        printChessBoard();
     }
 
     private String getBlankLine() {
@@ -73,6 +73,10 @@ public class Board {
 
     private String getNextLine() {
         return "\n";
+    }
+
+    private void printChessBoard() {
+        System.out.println(createChessBoard());
     }
 
     private String createChessBoard() {
