@@ -2,15 +2,15 @@ package pieces;
 
 import lombok.Getter;
 
-import static pieces.PieceColor.BLACK_PIECE;
-import static pieces.PieceColor.WHITE_PIECE;
+import static pieces.PieceColor.BLACK_COLOR;
+import static pieces.PieceColor.WHITE_COLOR;
 
 @Getter
 public class Pawn {
     private final String color;
 
     public Pawn() {
-        this.color = WHITE_PIECE;
+        this.color = WHITE_COLOR;
     }
 
     public Pawn(final String color) {
@@ -23,7 +23,7 @@ public class Pawn {
      * TODO: 던진 예외를 처리해야 함
      */
     private void validatePawnColor(final String color) {
-        if (!color.equals(BLACK_PIECE) && !color.equals(WHITE_PIECE)) {
+        if (!color.equals(BLACK_COLOR) && !color.equals(WHITE_COLOR)) {
             throw new IllegalArgumentException("[ERROR] black 또는 white 폰을 입력해야 합니다. color: " + color);
         }
     }
