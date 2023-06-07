@@ -1,12 +1,14 @@
 package chess;
 
 import pieces.Pawn;
+import utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static pieces.PieceColor.BLACK_COLOR;
 import static pieces.PieceColor.BLACK_REPRESENTATION;
+import static utils.StringUtils.appendNewLine;
 
 public class Board {
     private static final int BOARD_LENGTH = 8;
@@ -49,7 +51,7 @@ public class Board {
         return createPawnsResult(blackPawns);
     }
 
-    private String createPawnsResult(List<Pawn> pawns) {
+    private String createPawnsResult(final List<Pawn> pawns) {
         StringBuilder sb = new StringBuilder();
         for (Pawn p : pawns) {
             sb.append(p.getRepresentation());
@@ -74,17 +76,16 @@ public class Board {
 
     private String createChessBoard() {
         final String BLANK_LINE = "........";
-        String lineSeparator = System.lineSeparator();
 
         StringBuilder sb = new StringBuilder();
-        sb.append(BLANK_LINE).append(lineSeparator)
-                .append(getBlackPawnsResult()).append(lineSeparator)
-                .append(BLANK_LINE).append(lineSeparator)
-                .append(BLANK_LINE).append(lineSeparator)
-                .append(BLANK_LINE).append(lineSeparator)
-                .append(BLANK_LINE).append(lineSeparator)
-                .append(getWhitePawnsResult()).append(lineSeparator)
-                .append(BLANK_LINE).append(lineSeparator);
+        sb.append(appendNewLine(BLANK_LINE))
+                .append(appendNewLine(getBlackPawnsResult()))
+                .append(appendNewLine(BLANK_LINE))
+                .append(appendNewLine(BLANK_LINE))
+                .append(appendNewLine(BLANK_LINE))
+                .append(appendNewLine(BLANK_LINE))
+                .append(appendNewLine(getWhitePawnsResult()))
+                .append(appendNewLine(BLANK_LINE));
 
         return sb.toString();
     }
