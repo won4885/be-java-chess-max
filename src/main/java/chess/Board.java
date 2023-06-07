@@ -32,6 +32,7 @@ public class Board {
         return blackPawns.size();
     }
 
+    // TODO: index 예외 처리
     public Pawn findWhitePawn(final int index) {
         return whitePawns.get(index);
     }
@@ -41,21 +42,20 @@ public class Board {
     }
 
     public String getWhitePawnsResult() {
-        StringBuilder white = new StringBuilder();
-        for (Pawn whitePawn : whitePawns) {
-            white.append(whitePawn.getRepresentation());
-        }
-
-        return white.toString();
+        return createPawnsResult(whitePawns);
     }
 
     public String getBlackPawnsResult() {
-        StringBuilder black = new StringBuilder();
-        for (Pawn blackPawn : blackPawns) {
-            black.append(blackPawn.getRepresentation());
+        return createPawnsResult(blackPawns);
+    }
+
+    private String createPawnsResult(List<Pawn> pawns) {
+        StringBuilder sb = new StringBuilder();
+        for (Pawn p : pawns) {
+            sb.append(p.getRepresentation());
         }
 
-        return black.toString();
+        return sb.toString();
     }
 
     public void initialize() {
@@ -64,15 +64,8 @@ public class Board {
             addBlackPawns(new Pawn(BLACK_COLOR, BLACK_REPRESENTATION));
         }
 
+        // TODO: output 클래스 분리
         printChessBoard();
-    }
-
-    private String getBlankLine() {
-        return "........";
-    }
-
-    private String getNextLine() {
-        return "\n";
     }
 
     private void printChessBoard() {
@@ -80,15 +73,18 @@ public class Board {
     }
 
     private String createChessBoard() {
+        final String BLANK_LINE = "........";
+        String lineSeparator = System.lineSeparator();
+
         StringBuilder sb = new StringBuilder();
-        sb.append(getBlankLine()).append(getNextLine())
-                .append(getBlackPawnsResult()).append(getNextLine())
-                .append(getBlankLine()).append(getNextLine())
-                .append(getBlankLine()).append(getNextLine())
-                .append(getBlankLine()).append(getNextLine())
-                .append(getBlankLine()).append(getNextLine())
-                .append(getWhitePawnsResult()).append(getNextLine())
-                .append(getBlankLine()).append(getNextLine());
+        sb.append(BLANK_LINE).append(lineSeparator)
+                .append(getBlackPawnsResult()).append(lineSeparator)
+                .append(BLANK_LINE).append(lineSeparator)
+                .append(BLANK_LINE).append(lineSeparator)
+                .append(BLANK_LINE).append(lineSeparator)
+                .append(BLANK_LINE).append(lineSeparator)
+                .append(getWhitePawnsResult()).append(lineSeparator)
+                .append(BLANK_LINE).append(lineSeparator);
 
         return sb.toString();
     }
