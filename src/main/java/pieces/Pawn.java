@@ -13,8 +13,7 @@ public class Pawn {
      * 기본 생생자는 white 기반
      */
     public Pawn() {
-        this.color = WHITE_COLOR;
-        this.representation = WHITE_REPRESENTATION;
+        this(WHITE_COLOR, WHITE_REPRESENTATION);
     }
 
     public Pawn(final String color, final char representation) {
