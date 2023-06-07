@@ -17,4 +17,11 @@ class PieceTest {
         assertThat(color).isEqualTo(piece.getColor());
         assertThat(representation).isEqualTo(piece.getRepresentation());
     }
+
+    @DisplayName("검은색 말과 흰색 말을 구분할 수 있다.")
+    @Test
+    void checkColor() {
+        assertThat(Piece.createWhitePawn().isWhite()).isTrue();
+        assertThat(Piece.createBlackPawn().isBlack()).isTrue();
+    }
 }

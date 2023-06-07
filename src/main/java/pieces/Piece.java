@@ -2,6 +2,8 @@ package pieces;
 
 import lombok.Getter;
 
+import java.util.Objects;
+
 @Getter
 public class Piece {
     public static final String WHITE_COLOR = "white";
@@ -81,6 +83,14 @@ public class Piece {
 
     public static Piece createBlackKing() {
         return new Piece(BLACK_COLOR, BLACK_KING_REPRESENTATION);
+    }
+
+    public boolean isWhite() {
+        return (Objects.equals(color, WHITE_COLOR));
+    }
+
+    public boolean isBlack() {
+        return (Objects.equals(color, BLACK_COLOR));
     }
 
     /**
