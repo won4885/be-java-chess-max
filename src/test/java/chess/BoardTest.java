@@ -18,7 +18,6 @@ class BoardTest {
     @DisplayName("initialize: 체스 판을 p와 P로 구분하여 초기화한다.")
     @Test
     void initialize() throws Exception {
-
         final Board board = new Board();
         board.initialize();
 
@@ -26,6 +25,7 @@ class BoardTest {
         assertThat("PPPPPPPP").isEqualTo(board.getBlackPawnsResult());
     }
 
+    @DisplayName("전체 체스판의 전체 상태를 알 수 있다.")
     @Test
     void create() throws Exception {
         board.initialize();
@@ -34,11 +34,11 @@ class BoardTest {
 
         String blankRank = appendNewLine("........");
 
-        assertThat(board.showBoard()).isEqualTo(
+        assertThat(board.createChessBoard()).isEqualTo(
                 appendNewLine("RNBQKBNR") +
-                appendNewLine("PPPPPPPP") +
-                blankRank + blankRank + blankRank + blankRank +
-                appendNewLine("pppppppp") +
-                appendNewLine("rnbqkbnr"));
+                        appendNewLine("PPPPPPPP") +
+                        blankRank + blankRank + blankRank + blankRank +
+                        appendNewLine("pppppppp") +
+                        appendNewLine("rnbqkbnr"));
     }
 }
