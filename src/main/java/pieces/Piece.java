@@ -20,7 +20,7 @@ public class Piece {
     }
 
     private Piece(final String color, final char representation) {
-        validatePawn(color, representation);
+        validatePiece(color, representation);
         this.color = color;
         this.representation = representation;
     }
@@ -37,7 +37,7 @@ public class Piece {
      * black 또는 white 색상이 아닌 경우 예외를 던짐
      * TODO: 던진 예외를 처리해야 함
      */
-    private void validatePawn(final String color, final char representation) {
+    private void validatePiece(final String color, final char representation) {
         if (!color.equals(BLACK_COLOR) && !color.equals(WHITE_COLOR)
                 && representation != BLACK_PAWN_REPRESENTATION && representation != WHITE_PAWN_REPRESENTATION) {
             throw new IllegalArgumentException("[ERROR] color: " + color + ", " + "representation: " + representation);
