@@ -2,24 +2,35 @@ package pieces;
 
 import lombok.Getter;
 
-import static pieces.PieceColor.*;
-
 @Getter
 public class Piece {
+    public static final String WHITE_COLOR = "white";
+    public static final char WHITE_PAWN_REPRESENTATION = 'p';
+    public static final String BLACK_COLOR = "black";
+    public static final char BLACK_PAWN_REPRESENTATION = 'P';
+
     private final String color;
     private final char representation;
 
     /**
      * 기본 생생자는 white 기반
      */
-    public Piece() {
-        this(WHITE_COLOR, WHITE_REPRESENTATION);
+    private Piece() {
+        this(WHITE_COLOR, WHITE_PAWN_REPRESENTATION);
     }
 
-    public Piece(final String color, final char representation) {
+    private Piece(final String color, final char representation) {
         validatePawn(color, representation);
         this.color = color;
         this.representation = representation;
+    }
+
+    public static Piece createWhitePawn() {
+        return new Piece();
+    }
+
+    public static Piece createBlackPawn() {
+        return new Piece(BLACK_COLOR, BLACK_PAWN_REPRESENTATION);
     }
 
     /**
@@ -28,7 +39,7 @@ public class Piece {
      */
     private void validatePawn(final String color, final char representation) {
         if (!color.equals(BLACK_COLOR) && !color.equals(WHITE_COLOR)
-                && representation != BLACK_REPRESENTATION && representation != WHITE_REPRESENTATION) {
+                && representation != BLACK_PAWN_REPRESENTATION && representation != WHITE_PAWN_REPRESENTATION) {
             throw new IllegalArgumentException("[ERROR] color: " + color + ", " + "representation: " + representation);
         }
     }

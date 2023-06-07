@@ -5,8 +5,6 @@ import pieces.Piece;
 import java.util.ArrayList;
 import java.util.List;
 
-import static pieces.PieceColor.BLACK_COLOR;
-import static pieces.PieceColor.BLACK_REPRESENTATION;
 import static utils.StringUtils.appendNewLine;
 
 public class Board {
@@ -61,8 +59,8 @@ public class Board {
 
     public void initialize() {
         for (int i = 0; i < BOARD_LENGTH; i++) {
-            addWhitePawns(new Piece());
-            addBlackPawns(new Piece(BLACK_COLOR, BLACK_REPRESENTATION));
+            addWhitePawns(Piece.createWhitePawn());
+            addBlackPawns(Piece.createBlackPawn());
         }
 
         // TODO: output 클래스 분리
