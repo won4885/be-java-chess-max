@@ -5,18 +5,18 @@ import lombok.Getter;
 import static pieces.PieceColor.*;
 
 @Getter
-public class Pawn {
+public class Piece {
     private final String color;
     private final char representation;
 
     /**
      * 기본 생생자는 white 기반
      */
-    public Pawn() {
+    public Piece() {
         this(WHITE_COLOR, WHITE_REPRESENTATION);
     }
 
-    public Pawn(final String color, final char representation) {
+    public Piece(final String color, final char representation) {
         validatePawn(color, representation);
         this.color = color;
         this.representation = representation;
