@@ -11,6 +11,7 @@ import java.util.ListIterator;
 import static utils.StringUtils.appendNewLine;
 
 public class Board {
+    private static final int BOARD_LENGTH = 8;
     private final List<Rank> ranks = new ArrayList<>();
 
     public Board() {
@@ -25,6 +26,12 @@ public class Board {
         ranks.add(Rank.initializeBlankLine());
         ranks.add(Rank.initializeBlackPawns());
         ranks.add(Rank.initializeBlackPieces());
+    }
+
+    public void initializeEmpty() {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
+            ranks.add(Rank.initializeBlankLine());
+        }
     }
 
     public String showBoard() {
@@ -56,12 +63,12 @@ public class Board {
     }
 
     public Piece findPiece(String position) {
-        char x = position.charAt(0);
-        int xPos = x - 'a';
+        Position p = new Position(position);
+        return ranks.get(p.getIndexOfY()).findPiece(p.getIndexOfX());
+    }
 
-        char y = position.charAt(1);
-        int yPos = Character.getNumericValue(y);
-
-        return ranks.get(yPos - 1).findPiece(xPos);
+    public void move(String position, Piece piece) {
+        Position p = new Position(position);
+        ranks.get(p.getIndexOfY()).move(p.getIndexOfX(), piece);
     }
 }

@@ -12,6 +12,10 @@ import java.util.List;
 public class Rank {
     private final List<Piece> pieces = new ArrayList<>();
 
+    public void move(int xPos, Piece piece) {
+        pieces.set(xPos, piece);
+    }
+
     public void addPiece(final Piece piece) {
         pieces.add(piece);
     }

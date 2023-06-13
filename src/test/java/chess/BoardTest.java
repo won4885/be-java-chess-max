@@ -35,14 +35,14 @@ class BoardTest {
     }
 
     @Test
-    public void print() {
+    void print() {
         board.initialize();
         System.out.println("board.showBoard()\n" + board.showBoard());
     }
 
     @DisplayName("각 색깔과 타입을 카운트할 수 있다.")
     @Test
-    public void countPieceByColorAndType() {
+    void countPieceByColorAndType() {
         board.initialize();
 
         assertThat(8).isEqualTo(board.countPieceByColorAndType(WHITE, PAWN));
@@ -52,12 +52,25 @@ class BoardTest {
 
     @DisplayName("각각의 말을 찾을 수 있다.")
     @Test
-    public void findPiece() {
+    void findPiece() {
         board.initialize();
 
         assertThat(Piece.createBlackRook()).isEqualTo(board.findPiece("a8"));
         assertThat(Piece.createBlackRook()).isEqualTo(board.findPiece("h8"));
         assertThat(Piece.createWhiteRook()).isEqualTo(board.findPiece("a1"));
         assertThat(Piece.createWhiteRook()).isEqualTo(board.findPiece("h1"));
+    }
+
+    @DisplayName("말을 움직일 수 있다.")
+    @Test
+    void move() {
+        board.initialize();
+
+        String position = "b5";
+        Piece blackRook = Piece.createBlackRook();
+        board.move(position, Piece.createBlackRook());
+
+        assertThat(blackRook).isEqualTo(board.findPiece(position));
+        System.out.println("board.showBoard()\n" + board.showBoard());
     }
 }
