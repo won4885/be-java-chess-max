@@ -2,6 +2,7 @@ package pieces;
 
 import lombok.Getter;
 
+import java.util.List;
 import java.util.Objects;
 
 import static pieces.Piece.Color.*;
@@ -14,12 +15,20 @@ public class Piece {
     }
 
     public enum Type {
-        PAWN('p'), ROOK('r'), KNIGHT('n'), BISHOP('b'), QUEEN('q'), KING('k'), NO_PIECE('.');
+        PAWN('p', 1.0),
+        ROOK('r', 5.0),
+        KNIGHT('n', 2.5),
+        BISHOP('b', 3.0),
+        QUEEN('q', 9.0),
+        KING('k', 0.0),
+        NO_PIECE('.', 0.0);
 
         private final char representation;
+        private final double defaultPoint;
 
-        Type(final char representation) {
+        Type(final char representation, final double defaultPoint) {
             this.representation = representation;
+            this.defaultPoint = defaultPoint;
         }
 
         public char getWhiteRepresentation() {
@@ -28,6 +37,10 @@ public class Piece {
 
         public char getBlackRepresentation() {
             return Character.toUpperCase(this.representation);
+        }
+
+        public double getDefaultPoint() {
+            return defaultPoint;
         }
     }
 
@@ -125,6 +138,16 @@ public class Piece {
 
     private boolean matchType(final Type type) {
         return this.type == type;
+    }
+
+    public void addPiecesByColor(Color color, List<Piece> piecesByColor) {
+        if (matchColor(color)) {
+            piecesByColor.add(this);
+        }
+    }
+
+    public double getPoint() {
+        return this.type.getDefaultPoint();
     }
 
     @Override

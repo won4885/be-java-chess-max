@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import pieces.Piece;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static pieces.Piece.Color.BLACK;
 import static pieces.Piece.Color.WHITE;
 import static pieces.Piece.Type.*;
@@ -68,9 +69,29 @@ class BoardTest {
 
         String position = "b5";
         Piece blackRook = Piece.createBlackRook();
-        board.move(position, Piece.createBlackRook());
+        board.move(position, blackRook);
 
         assertThat(blackRook).isEqualTo(board.findPiece(position));
+        System.out.println("board.showBoard()\n" + board.showBoard());
+    }
+
+    @DisplayName("점수를 계산할 수 있다.")
+    @Test
+    void calculatePoint() {
+        board.initialize();
+
+        board.move("b6", Piece.createBlackPawn());
+        board.move("e6", Piece.createBlackQueen());
+        board.move("b8", Piece.createBlackKing());
+        board.move("c8", Piece.createBlackRook());
+        board.move("f2", Piece.createWhitePawn());
+        board.move("g2", Piece.createWhitePawn());
+        board.move("e1", Piece.createWhiteRook());
+        board.move("f1", Piece.createWhiteKing());
+
+        assertEquals(15.0, board.calculatePoint(BLACK), 0.01);
+        assertEquals(7.0, board.calculatePoint(WHITE), 0.01);
+
         System.out.println("board.showBoard()\n" + board.showBoard());
     }
 }

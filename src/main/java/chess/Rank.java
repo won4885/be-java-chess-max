@@ -16,12 +16,21 @@ public class Rank {
         pieces.set(xPos, piece);
     }
 
+    public List<Piece> findPiecesByColor(final Color color) {
+        List<Piece> piecesByColor = new ArrayList<>();
+        for (Piece piece : pieces) {
+            piece.addPiecesByColor(color, piecesByColor);
+        }
+
+        return Collections.unmodifiableList(piecesByColor);
+    }
+
     public void addPiece(final Piece piece) {
         pieces.add(piece);
     }
 
-    public Collection<Piece> getPieces() {
-        return Collections.unmodifiableCollection(pieces);
+    public List<Piece> getPieces() {
+        return Collections.unmodifiableList(pieces);
     }
 
     public Piece findPiece(final int xPosition) {
