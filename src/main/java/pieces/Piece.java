@@ -34,7 +34,7 @@ public class Piece {
     private final Color color;
     private final Type type;
 
-    private Piece(final Color color, Type type) {
+    private Piece(final Color color, final Type type) {
         this.color = color;
         this.type = type;
     }
@@ -99,19 +99,72 @@ public class Piece {
         return createBlack(KING);
     }
 
-    private static Piece createWhite(Type type) {
+    private static Piece createWhite(final Type type) {
         return new Piece(WHITE, type);
     }
 
-    private static Piece createBlack(Type type) {
+    private static Piece createBlack(final Type type) {
         return new Piece(BLACK, type);
     }
 
     public boolean isWhite() {
-        return (Objects.equals(color, WHITE));
+        return matchColor(WHITE);
     }
 
     public boolean isBlack() {
-        return (Objects.equals(color, BLACK));
+        return matchColor(BLACK);
+    }
+
+    public boolean matchColorAndType(final Color color, final Type type) {
+        return matchColor(color) && matchType(type);
+    }
+
+    private boolean matchColor(final Color color) {
+        return this.color == color;
+    }
+
+    private boolean matchType(final Type type) {
+        return this.type == type;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((color == null) ? 0 : color.hashCode());
+        result = prime * result + ((type == null) ? 0 : type.hashCode());
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Piece other = (Piece) obj;
+
+        if (color != other.color) {
+            return false;
+        }
+
+        return type == other.type;
+    }
+
+    @Override
+    public String toString() {
+        return "Piece{" +
+                "color=" + color +
+                ", type=" + type +
+                '}';
     }
 }
